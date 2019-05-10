@@ -26,7 +26,7 @@ if(validate.validatecheck===true){
  };
 
 
-class Register extends Component {
+class Login extends Component {
     constructor(props) {
         super(props)
         this.state = { 
@@ -92,7 +92,7 @@ onchange=(event)=>{
 
           case 'email':
           validate.email = 
-          emailRegx.test(value) ? "enter a valid email":'';
+          emailRegx.test(value) ? "":"enter a valid email";
           break;
 
           case 'password':

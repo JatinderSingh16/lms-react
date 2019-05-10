@@ -39,6 +39,37 @@
      }
 }else if (isset($obj['post'])  && ($obj['post']=='yes') && ($obj['state']=='login') ){
 
+
+    $email=(isset($obj['email']) && $obj['email']) ? $obj['email']:'';
+    $password=(isset($obj['password']) && $obj['password']) ? $obj['password']:'';
+  
+    $getUser="select *from register where email='".$email."'and password='".$password."'";
+
+    $result=mysqli_query($conn,$getUser);
+
+
+         $rows=mysqli_num_rows($result);
+         
+         if($rows>0){
+
+
+          $user=array(); 
+         $data=mysqli_fetch_assoc($result);
+         $user['user_id']=$data['id'];
+         $user['firstname']=$data['firstname'];
+         $user['lastname']=$data['lastname'];
+         $user['email']=$data['email'];
+         $user['role']=$data['role'];
+
+
+         print_r(array('user_data'=>$user,'status'=>true));
+            
+         }else{
+
+            print_r(array('user_data'=>'','status'=>false));
+         }
+       
+    
     
 }
 
